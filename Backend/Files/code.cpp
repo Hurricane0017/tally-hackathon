@@ -1,13 +1,10 @@
-#include<bits/stdc++.h>
+#include <iostream>
+#include <string>
 using namespace std;
 
-int main(){
-    int n;
-    cin >> n;
-    while(n--){
-        int a, b;
-        cin >> a >> b;
-        cout << a + b << endl;
+int main() {
+    while(1){
+        cout<<"ved";
     }
     return 0;
 }

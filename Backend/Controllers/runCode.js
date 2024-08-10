@@ -5,7 +5,7 @@ const path = require("path");
 
 
 const runCode = async (req, res) => {
-  const { code, language, userInput } = req.body;
+  const { code, language, input } = req.body;
   const basePath = path.join(__dirname, "..", "ProcessCode");
   const outputFile = path.join(basePath,'..','Files', "output.txt");
   const errorFile = path.join(basePath,'..','Files', "error.txt");
@@ -13,7 +13,7 @@ const runCode = async (req, res) => {
   try {
     if (language === "cpp") {
       await generateExeCpp(code);
-      await runExecutable(userInput);
+      await runExecutable(input);
 
       // Check if output.txt exists
       if (fs.existsSync(outputFile)) {
@@ -27,7 +27,7 @@ const runCode = async (req, res) => {
       res.status(400).json({ status: "error", message: "Unsupported language" });
     }
   } catch (error) {
-    res.status(500).json({ status: "error", message: error.message });
+    res.status(200).json({ status: "error", message: error.message });
   }
 };
 

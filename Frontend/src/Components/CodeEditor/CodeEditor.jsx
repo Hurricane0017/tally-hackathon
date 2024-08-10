@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import MonacoEditor from '@monaco-editor/react';
-import InputComponent from '../InputComponent/InputComponent';
-import OutputComponent from '../OutputComponent/OutputComponent';
+import InputComponent from './InputComponent/InputComponent';
+import OutputComponent from './OutputComponent/OutputComponent';
 import classes from './CodeEditor.module.css';
 import axios from 'axios';
 
@@ -43,7 +43,7 @@ function CodeEditor() {
   const [theme, setTheme] = useState('vs-dark');
   const [code, setCode] = useState(languageTemplates.cpp);
   const [input, setInput] = useState('');
-  const [output, setOutput] = useState('');
+  const [output, setOutput] = useState('Output Comes here');
 
   useEffect(() => {
     setCode(languageTemplates[language]);
@@ -67,9 +67,15 @@ function CodeEditor() {
       language,
       input,
     };
+    console.log(payload);
     try{
-      const response = await axios.post('http://localhost:5000/run', payload);
-      setOutput(response.data.output);
+      const res = await axios.post('http://localhost:5001/api/run', payload);
+      if(res.data.status === 'success'){
+        setOutput(res.data.output);
+      }
+      else{
+        setOutput(res.data.message);
+      }
     }
     catch(error){
       console.error('Error running code:', error);
@@ -89,20 +95,19 @@ function CodeEditor() {
           <option value="vs-light">Light</option>
           <option value="vs-dark">Dark</option>
         </select>
-        <button onClick={handleRunCode} className={classes.runButton}>Run Code</button>
       </div>
       <MonacoEditor
-        height="400px"
+        height="55vh"
         language={language}
         theme={theme}
         value={code}
         options={{
           automaticLayout: true,
           minimap: { enabled: false },
-          fontSize: 14,
+          fontSize: 16,
           scrollBeyondLastLine: false,
           wordWrap: 'on',
-          padding: { top: 10 },
+          padding: { top: 1 + "rem" },
         }}
         onChange={handleEditorChange}
         className={classes.monacoEditor}
@@ -110,6 +115,10 @@ function CodeEditor() {
       <div className={classes.ioContainer}>
         <InputComponent input={input} setInput={setInput} />
         <OutputComponent output={output} />
+      </div>
+      <div className={classes.buttonContainer}>
+        <button onClick={handleRunCode} className={classes.runButton}>Run</button>
+        <button onClick={handleRunCode} className={classes.submitButton}>Submit</button>
       </div>
     </div>
   );
