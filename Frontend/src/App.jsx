@@ -1,23 +1,24 @@
-import SolveProblem from './Components/SolveProblem/SolveProblem';
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import ProblemPage from "./Components/Pages/ProblemPage";
+import HomePage from "./Components/Pages/HomePage";
+import Navbar from "./Components/Navbar";
+import ContestPage from "./Components/Pages/ContestPage";
+import ProfilePage from "./Components/Pages/ProfilePage";
+import axios from "axios";
+
+axios.defaults.baseURL = "http://localhost:5001/api";
 
 const App = () => {
-  const problem={
-    title:"Change A to B",
-    description:"Given a string s, change every occurrence of the character 'a' to the character 'b'.",
-    memoryLimit:"256MB",
-    timeLimit:"1000ms",
-    inputFormat:"The input consists of a single line containing a string s.",
-    outputFormat:"Output the modified string.",
-    constraints:"1 <= |s| <= 1000",
-    sample:{
-      input:"abca",
-      output:"bbcb"
-    }
-  }
   return (
-    <div>
-      <SolveProblem problem={problem}/>
-    </div>
+    <Router>
+      <Navbar />
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/problems" element={<ProblemPage />} />
+        <Route path="/contest" element={<ContestPage />} />
+        <Route path="/profile" element={<ProfilePage />} />
+      </Routes>
+    </Router>
   );
 };
 

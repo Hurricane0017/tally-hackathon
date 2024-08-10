@@ -1,0 +1,25 @@
+.navbar {
+    display: flex;
+    justify-content: space-around;
+    background-color: #000; /* Black background */
+    padding: 1rem;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Adds a slight shadow */
+  }
+  
+  .nav-link {
+    color: #fff; /* White text */
+    text-decoration: none;
+    font-size: 1.2rem;
+    padding: 0.5rem 1rem;
+    transition: background-color 0.3s, color 0.3s;
+  }
+  
+  .nav-link:hover {
+    background-color: #333; /* Slightly lighter shade on hover */
+    border-radius: 5px;
+  }
+  
+  .active {
+    border-bottom: 2px solid #fff; /* Highlight active link */
+  }
+  

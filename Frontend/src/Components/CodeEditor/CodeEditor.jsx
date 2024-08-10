@@ -69,7 +69,7 @@ function CodeEditor() {
     };
     console.log(payload);
     try{
-      const res = await axios.post('http://localhost:5001/api/run', payload);
+      const res = await axios.post('/run', payload);
       if(res.data.status === 'success'){
         setOutput(res.data.output);
       }
