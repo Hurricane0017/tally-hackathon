@@ -1,13 +1,21 @@
-# Use an official Ubuntu base image
+# Use the latest Ubuntu image as the base
 FROM ubuntu:latest
 
-# Install necessary tools
-RUN apt-get update && \
-    apt-get install -y g++ make
+# Install necessary packages
+RUN apt-get update && apt-get install -y \
+    g++ \
+    make \
+    && rm -rf /var/lib/apt/lists/*
 
-# Set the working directory
-WORKDIR /app
+# Set the working directory inside the container
+WORKDIR /sandbox
 
-# The default command will be an interactive shell
-CMD ["/bin/bash"]
+# Copy the entrypoint script into the container
+COPY entrypoint.sh /usr/local/bin/
+
+# Make the script executable
+RUN chmod +x /usr/local/bin/entrypoint.sh
+
+# Set the entrypoint to the script
+ENTRYPOINT ["entrypoint.sh"]
 

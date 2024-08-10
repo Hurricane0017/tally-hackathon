@@ -6,8 +6,8 @@
       "type": "lldb",
       "request": "launch",
       "args": [],
-      "cwd": "/Users/apple/Desktop/tallyHackathon/Backend/Files",
-      "program": "/Users/apple/Desktop/tallyHackathon/Backend/Files/build/Debug/outDebug"
+      "cwd": "/Users/apple/Desktop/tallyHackathon/Backend/Docker",
+      "program": "/Users/apple/Desktop/tallyHackathon/Backend/Docker/build/Debug/outDebug"
     }
   ]
 }
