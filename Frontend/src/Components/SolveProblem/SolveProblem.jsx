@@ -37,7 +37,7 @@ const SolveProblem = ({problem}) => {
               className={styles.rightBlock}
               style={{ width: rightWidth }}
             >
-              <CodeEditor />
+              <CodeEditor type="solveProblem"/>
             </div>
           </div>
         );

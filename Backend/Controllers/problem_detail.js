@@ -1,4 +1,3 @@
-const e = require("express");
 const pool = require("../db");
 const query = require("../quaries");
 

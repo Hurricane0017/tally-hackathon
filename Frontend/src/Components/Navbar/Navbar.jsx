@@ -10,6 +10,9 @@ export default function Navbar() {
       <NavLink to="/problems" className={classes.navLink} activeClassName={classes.active}>
         Problems
       </NavLink>
+      <NavLink to="/ide" className={classes.navLink} activeClassName={classes.active}>
+        IDE
+      </NavLink>
       <NavLink to="/contest" className={classes.navLink} activeClassName={classes.active}>
         Contest
       </NavLink>
