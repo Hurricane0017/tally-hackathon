@@ -1,6 +1,6 @@
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import ProblemPage from "./Components/Pages/ProblemContainer/ProblemPage"
-import HomePage from "./Components/Pages/HomePage";
+// import HomePage from "./Components/Pages/HomePage";
 import Navbar from "./Components/Navbar/Navbar";
 import ContestPage from "./Components/Pages/Contest/ContestPage";
 import ProfilePage from "./Components/Pages/ProfilePage";
@@ -9,7 +9,8 @@ import SolveProblem  from "./Components/SolveProblem/SolveProblem";
 import AddProblem from "./Components/Pages/AddProblem/AddProblem";
 import axios from "axios";
 
-axios.defaults.baseURL = "http://192.168.31.243:5001/api";
+// axios.defaults.baseURL = "http://192.168.31.243:5001/api";
+axios.defaults.baseURL = "http://localhost:5001/api";
 
 const App = () => {
   return (

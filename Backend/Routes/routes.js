@@ -2,7 +2,7 @@ const { Router } = require("express");
 const problem_detail = require("../Controllers/problem_detail.js");
 const addProblem = require("../Controllers/addproblem.js");
 const problem_list = require("../Controllers/problem_list.js");
-const processCode = require('../Controllers/processCode.js')
+const processCode = require('../ProcessCode/processCode.js')
 const contest_List = require("../Controllers/contestList.js")
 
 const router = Router();
