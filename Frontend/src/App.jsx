@@ -7,9 +7,10 @@ import ProfilePage from "./Components/Pages/ProfilePage";
 import CodeEditor from './Components/CodeEditor/CodeEditor';
 import SolveProblem  from "./Components/SolveProblem/SolveProblem";
 import AddProblem from "./Components/Pages/AddProblem/AddProblem";
+import ContestProblem from "./Components/Pages/Contest/ContestProblem"
 import axios from "axios";
 
-axios.defaults.baseURL = "http://192.168.31.243:5001/api";
+axios.defaults.baseURL = "http://192.168.172.197:5001/api";
 
 const App = () => {
   return (
@@ -23,6 +24,9 @@ const App = () => {
         <Route path="/profile" element={<ProfilePage />} />
         <Route path="/solveproblem/:id" element={<SolveProblem/>}/>
         <Route path="/add-problem" element={<AddProblem />} />
+        <Route path="/contest-detail" element={<ContestProblem/>} />
+
+
       </Routes>
     </Router>
   );
