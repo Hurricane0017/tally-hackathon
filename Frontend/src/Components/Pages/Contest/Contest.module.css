@@ -1,0 +1,65 @@
+.container {
+    background-color: #121212;
+    color: #e0e0e0;
+    width: 100vw;
+    min-height: 100vh;
+    /* padding: 35px; */
+    margin-top: 4rem;
+    font-family: 'Arial', sans-serif;
+  }
+  
+  .header {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    text-align: center;
+    color: #f5f5f5;
+    border-bottom: 2px solid #333;
+    padding-bottom: 10px;
+  }
+  
+  .subHeader {
+    padding: 1rem;
+    font-size: 1.5rem;
+    color: #f5f5f5;
+  }
+  
+  .contestList {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+  }
+  .contestWrap{
+    width: 50vw;
+  }
+  .contestItem {
+    background-color: #1e1e1e;
+    border: 1px solid #333;
+    border-radius: 8px;
+    margin-bottom: 15px;
+    padding: 15px;
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+  }
+  
+  .contestItem:hover {
+    transform: scale(1.02);
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.3);
+  }
+  
+  .contestName {
+    font-size: 1.8rem;
+    color: #ffab00;
+    margin-bottom: 10px;
+  }
+  
+  .contestDetails {
+    font-size: 1.2rem;
+    color: #b3b3b3;
+  }
+  
+  .contestDetails p {
+    margin: 5px 0;
+  }
+  

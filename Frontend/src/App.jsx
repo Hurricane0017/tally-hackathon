@@ -9,7 +9,7 @@ import SolveProblem  from "./Components/SolveProblem/SolveProblem";
 import AddProblem from "./Components/Pages/AddProblem/AddProblem";
 import axios from "axios";
 
-axios.defaults.baseURL = "http://192.168.31.243:5001";
+axios.defaults.baseURL = "http://192.168.31.243:5001/api";
 
 const App = () => {
   return (
