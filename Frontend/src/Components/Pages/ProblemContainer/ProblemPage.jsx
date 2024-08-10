@@ -12,7 +12,7 @@ const ProblemPage = () => {
     // Function to fetch problems from the API
     const fetchProblems = async () => {
       try {
-        const response = await axios.get(`/api/problem_list`);
+        const response = await axios.get(`/problem_list`);
         setProblemList(response.data);
       } catch (error) {
         console.error("Error fetching problem list:", error);
