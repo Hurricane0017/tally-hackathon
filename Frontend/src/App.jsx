@@ -1,5 +1,5 @@
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import ProblemPage from "./Components/Pages/ProblemPage";
+import ProblemPage from "./Components/Pages/ProblemContainer/ProblemPage"
 import HomePage from "./Components/Pages/HomePage";
 import Navbar from "./Components/Navbar/Navbar";
 import ContestPage from "./Components/Pages/ContestPage";
@@ -13,8 +13,8 @@ const App = () => {
     <Router>
       <Navbar />
       <Routes>
-        <Route path="/" element={<HomePage />} />
-        <Route path="/problems" element={<ProblemPage />} />
+        <Route exact path="/" element={<HomePage />} />
+        <Route exact path="/problems" element={<ProblemPage />} />
         <Route path="/contest" element={<ContestPage />} />
         <Route path="/profile" element={<ProfilePage />} />
       </Routes>
