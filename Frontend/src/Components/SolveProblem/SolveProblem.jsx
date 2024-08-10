@@ -23,7 +23,7 @@ const SolveProblem = () => {
   useEffect(() => {
     const fetchProblem = async () => {
       try {
-        const response = await axios.post(`/api/problem_detail`,{problem_id:id}); // Replace with your API endpoint
+        const response = await axios.post(`/problem_detail`,{problem_id:id}); // Replace with your API endpoint
         console.log(response);
         setProblem(response.data);
         setLoading(false);

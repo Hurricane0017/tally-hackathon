@@ -1,18 +1,19 @@
-/* eslint-disable react-hooks/exhaustive-deps */
 import { ProblemContainer } from './ProblemContainer';
 import classes from './ProblemPage.module.css';
 import { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom'; // Import useNavigate from react-router-dom
 import axios from 'axios';
 
 const ProblemPage = () => {
   const [problemList, setProblemList] = useState([]);
   const [sortOrder, setSortOrder] = useState('asc'); // 'asc' for ascending, 'desc' for descending
+  const navigate = useNavigate(); // Initialize the navigate function
 
   useEffect(() => {
     // Function to fetch problems from the API
     const fetchProblems = async () => {
       try {
-        const response = await axios.get(`/api/problem_list`);
+        const response = await axios.get(`/problem_list`);
         setProblemList(response.data);
       } catch (error) {
         console.error("Error fetching problem list:", error);
@@ -38,6 +39,10 @@ const ProblemPage = () => {
     setSortOrder(e.target.value);
   };
 
+  const handleAddProblem = () => {
+    navigate('/add-problem'); // Navigate to the AddProblem page
+  };
+
   return (
     <div className={classes.problemPage}>
       <div className={classes.sorting}>
@@ -46,6 +51,9 @@ const ProblemPage = () => {
           <option value="asc">Ascending</option>
           <option value="desc">Descending</option>
         </select>
+        <button className={classes.addProblemButton} onClick={handleAddProblem}>
+          Add Problem
+        </button>
       </div>
       
       {problemList.map((problem, serialNumber) => (

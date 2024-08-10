@@ -4,7 +4,7 @@ import classes from './Navbar.module.css';
 export default function Navbar() {
   return (
     <nav className={classes.navbar}>
-      <NavLink exact to="/" className={classes.navLink} activeClassName={classes.active}>
+      <NavLink exact to="/ide" className={classes.navLink} activeClassName={classes.active}>
         Home
       </NavLink>
       <NavLink to="/problems" className={classes.navLink} activeClassName={classes.active}>

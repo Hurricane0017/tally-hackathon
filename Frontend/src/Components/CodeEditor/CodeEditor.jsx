@@ -70,7 +70,7 @@ const CodeEditor = ({ type,sampleInput }) => {
     };
     console.log(payload);
     try {
-      const res = await axios.post('api/run', payload);
+      const res = await axios.post('/run', payload);
       if (res.data.status === 'success') {
         setOutput(res.data.output);
       }
