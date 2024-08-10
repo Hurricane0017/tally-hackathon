@@ -1,5 +1,6 @@
-import SolveProblem from '../../SolveProblem/SolveProblem';
+/* eslint-disable react-hooks/exhaustive-deps */
 import { ProblemContainer } from './ProblemContainer';
+import classes from './ProblemPage.module.css';
 import { useState, useEffect } from 'react';
 
 const ProblemPage = () => {
@@ -29,9 +30,9 @@ const ProblemPage = () => {
   }, []);
 
   return (
-    <div>
+    <div className={classes.problemPage}>
       {problemList.map((problem, serialNumber) => (
-        <ProblemContainer key={serialNumber} serialNumber={serialNumber} title={problem.title} />
+        <ProblemContainer problem={problem} serialNumber={serialNumber} key={serialNumber} />
       ))}
     </div>
   );

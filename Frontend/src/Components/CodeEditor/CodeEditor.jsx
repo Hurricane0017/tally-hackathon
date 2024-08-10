@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import { useState, useEffect } from 'react';
 import MonacoEditor from '@monaco-editor/react';
 import InputComponent from './InputComponent/InputComponent';
@@ -38,7 +39,7 @@ public class Main {
 }`
 };
 
-function CodeEditor() {
+const CodeEditor = ({ type }) => {
   const [language, setLanguage] = useState('cpp');
   const [theme, setTheme] = useState('vs-dark');
   const [code, setCode] = useState(languageTemplates.cpp);
@@ -62,28 +63,28 @@ function CodeEditor() {
   };
 
   const handleRunCode = async () => {
-    const payload= {
+    const payload = {
       code,
       language,
       input,
     };
     console.log(payload);
-    try{
+    try {
       const res = await axios.post('/run', payload);
-      if(res.data.status === 'success'){
+      if (res.data.status === 'success') {
         setOutput(res.data.output);
       }
-      else{
+      else {
         setOutput(res.data.message);
       }
     }
-    catch(error){
+    catch (error) {
       console.error('Error running code:', error);
     }
   };
-
+  console.log(type);
   return (
-    <div className={classes.codeEditorCont}>
+    <div className={classes.codeEditorCont} style={type === 'ide' ? { width: '98vw' } : {}}>
       <div className={classes.editControls}>
         <select value={language} onChange={handleLanguageChange} className={classes.selectInput}>
           <option value="cpp">C++</option>
