@@ -5,7 +5,7 @@
 }
 
 .ioTextArea, .ioPre {
-  width: 100%;
+  min-width: 90%;
   height: 100px;
   padding: 8px;
   border: 1px solid #ccc;

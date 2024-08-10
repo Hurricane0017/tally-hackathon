@@ -82,9 +82,9 @@ const CodeEditor = ({ type }) => {
       console.error('Error running code:', error);
     }
   };
-  console.log(type);
+
   return (
-    <div className={classes.codeEditorCont} style={type === 'ide' ? { width: '98vw' } : {}}>
+    <div className={classes.codeEditorCont} style={type === 'ide' ? { width: '98vw',marginTop:"4rem" } : {width:"97%"}}>
       <div className={classes.editControls}>
         <select value={language} onChange={handleLanguageChange} className={classes.selectInput}>
           <option value="cpp">C++</option>

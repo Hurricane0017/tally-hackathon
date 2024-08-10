@@ -1,8 +1,11 @@
 /* eslint-disable react/prop-types */
+import { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
 import Resizable from 'react-resizable-layout';
 import CodeEditor from '../CodeEditor/CodeEditor';
 import Problem from './ProblemContainer/Problem';
 import styles from './SolveProblem.module.css';
+import axios from 'axios';
 
 const YourSeparatorComponent = (props) => (
   <div
@@ -11,7 +14,34 @@ const YourSeparatorComponent = (props) => (
   />
 );
 
-const SolveProblem = ({problem}) => {
+const SolveProblem = () => {
+  const { id } = useParams(); // Get the problem ID from the URL
+  console.log(id);
+  const [problem, setProblem] = useState(null);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchProblem = async () => {
+      try {
+        const response = await axios.post(`/api/problem_detail`,{problem_id:id}); // Replace with your API endpoint
+        console.log(response);
+        setProblem(response.data);
+        setLoading(false);
+      } catch (error) {
+        console.error("Error fetching problem:", error);
+        setLoading(false);
+      }
+    };
+    fetchProblem();
+  }, [id]);
+
+  if (loading) {
+    return <div>Loading...</div>; // Or a spinner/loader component
+  }
+
+  if (!problem) {
+    return <div>Problem not found.</div>;
+  }
 
   return (
     <Resizable
