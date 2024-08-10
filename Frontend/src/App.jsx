@@ -1,7 +1,7 @@
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import ProblemPage from "./Components/Pages/ProblemPage";
 import HomePage from "./Components/Pages/HomePage";
-import Navbar from "./Components/Navbar";
+import Navbar from "./Components/Navbar/Navbar";
 import ContestPage from "./Components/Pages/ContestPage";
 import ProfilePage from "./Components/Pages/ProfilePage";
 import axios from "axios";

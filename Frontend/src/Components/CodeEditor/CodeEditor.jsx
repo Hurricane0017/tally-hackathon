@@ -97,7 +97,7 @@ function CodeEditor() {
         </select>
       </div>
       <MonacoEditor
-        height="55vh"
+        height="50vh"
         language={language}
         theme={theme}
         value={code}

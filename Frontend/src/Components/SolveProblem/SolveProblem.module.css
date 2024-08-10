@@ -1,6 +1,7 @@
 .wrapper {
   display: flex;
-  height: 100vh;
+  height: calc(100vh - 4rem);
+  overflow-y: hidden;
 }
 
 .leftBlock {
