@@ -62,7 +62,7 @@ const getOutput = () => {
 
       // Read the final output from verdict.txt
       const finalOutput = fs.readFileSync(verdictFile, 'utf8');
-      console.log('hey: ',finalOutput)
+
       try {
         fs.writeFileSync(timelimitFile, '');
         fs.writeFileSync(memorylimitFile, '');
