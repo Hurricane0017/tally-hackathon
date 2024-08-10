@@ -67,7 +67,7 @@ const SolveProblem = () => {
               className={styles.rightBlock}
               style={{ width: rightWidth }}
             >
-              <CodeEditor type="solveProblem"/>
+              <CodeEditor type="solveProblem" sampleInput={problem.input}/>
             </div>
           </div>
         );

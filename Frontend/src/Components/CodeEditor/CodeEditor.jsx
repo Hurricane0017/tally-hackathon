@@ -39,11 +39,11 @@ public class Main {
 }`
 };
 
-const CodeEditor = ({ type }) => {
+const CodeEditor = ({ type,sampleInput }) => {
   const [language, setLanguage] = useState('cpp');
   const [theme, setTheme] = useState('vs-dark');
   const [code, setCode] = useState(languageTemplates.cpp);
-  const [input, setInput] = useState('');
+  const [input, setInput] = useState(sampleInput);
   const [output, setOutput] = useState('Output Comes here');
 
   useEffect(() => {
@@ -70,7 +70,7 @@ const CodeEditor = ({ type }) => {
     };
     console.log(payload);
     try {
-      const res = await axios.post('/run', payload);
+      const res = await axios.post('api/run', payload);
       if (res.data.status === 'success') {
         setOutput(res.data.output);
       }
