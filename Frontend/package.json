@@ -13,6 +13,7 @@
   "dependencies": {
     "@monaco-editor/react": "^4.6.0",
     "@shadcn/ui": "^0.0.4",
+    "antd": "^5.20.0",
     "axios": "^1.7.3",
     "monaco-editor": "^0.50.0",
     "monaco-editor-core": "^0.50.0",

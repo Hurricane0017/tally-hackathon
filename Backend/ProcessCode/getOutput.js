@@ -23,7 +23,7 @@ const getOutput = () => {
     }
 
     // Ensure memorylimit.txt exists and contains a value
-    let memorylimit = '128m'; // Default memory limit
+    let memorylimit = '128'; // Default memory limit
     if (fs.existsSync(memorylimitFile)) {
       const fileContent = fs.readFileSync(memorylimitFile, 'utf8').trim();
       if (fileContent) {
@@ -37,7 +37,7 @@ const getOutput = () => {
 
 
     // Command to run the code in Docker
-    const runCmd = `docker run --rm --memory=${memorylimit} --cpus="0.5" -v ${path.dirname(verdictFile)}:/sandbox cpp-sandbox code.cpp`;
+    const runCmd = `docker run --rm --cpus="0.5" -v ${path.dirname(verdictFile)}:/sandbox cpp-sandbox code.cpp`;
 
     // Execute the command
     exec(runCmd, { timeout: parseInt(timelimit) * 1000 }, (err) => {
@@ -57,23 +57,26 @@ const getOutput = () => {
         if (err.killed) {
           // Write "Time Limit Exceeded" to verdict.txt
           fs.appendFileSync(verdictFile, "\nTime Limit Exceeded");
+          resolve({
+            success: true,
+            type: "TLE",
+            output: "Time Limit Exceeded",
+          })
         }
+        const error = fs.readFileSync(verdictFile, 'utf8');
+        resolve({
+          success: true,
+          type: "CE",
+          output: error,
+        });
       }
 
       // Read the final output from verdict.txt
       const finalOutput = fs.readFileSync(verdictFile, 'utf8');
 
-      try {
-        fs.writeFileSync(timelimitFile, '');
-        fs.writeFileSync(memorylimitFile, '');
-        fs.writeFileSync(verdictFile, '');
-        fs.writeFileSync(inputFile, '');
-      } catch (cleanupErr) {
-        console.error('Failed to clear file contents:', cleanupErr);
-      }
       resolve({
         success: true,
-        type: 'success',
+        type: 'AC',
         output: finalOutput,
       });
     });

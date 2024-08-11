@@ -6,6 +6,8 @@ import OutputComponent from './OutputComponent/OutputComponent';
 import classes from './CodeEditor.module.css';
 import axios from 'axios';
 import { useParams } from 'react-router-dom';
+import { message } from 'antd';
+
 
 const languageTemplates = {
   cpp: `#include <iostream>
@@ -74,12 +76,18 @@ const CodeEditor = ({ type,sampleInput }) => {
     console.log(payload);
     try {
       const res = await axios.post('http://localhost:5001/api/run', payload);
-      if (res.data.status === 'success') {
-        setOutput(res.data.output);
+      if(id){
+        if(res.data.status==="AC"){
+          message.success("Congratulations! Your solution is correct");
+        }
+        else if(res.data.status==="WA"){
+          message.error("Sorry, your solution is incorrect");
+        }
+        else{
+          message.error("Compilation Error!!");
+        }
       }
-      else {
-        setOutput(res.data.message);
-      }
+      setOutput(res.data.output);
     }
     catch (error) {
       console.error('Error running code:', error);
