@@ -3,7 +3,6 @@ import ProblemPage from "./Components/Pages/ProblemContainer/ProblemPage"
 // import HomePage from "./Components/Pages/HomePage";
 import Navbar from "./Components/Navbar/Navbar";
 import ContestPage from "./Components/Pages/Contest/ContestPage";
-import ProfilePage from "./Components/Pages/ProfilePage";
 import CodeEditor from './Components/CodeEditor/CodeEditor';
 import SolveProblem  from "./Components/SolveProblem/SolveProblem";
 import AddProblem from "./Components/Pages/AddProblem/AddProblem";
@@ -23,7 +22,6 @@ const App = () => {
         <Route path="/problems" element={<ProblemPage />} />
         <Route path="/ide" element={<CodeEditor type="ide"/>}/>
         <Route path="/contest" element={<ContestPage />} />
-        <Route path="/profile" element={<ProfilePage />} />
         <Route path="/solveproblem/:id" element={<SolveProblem/>}/>
         <Route path="/add-problem" element={<AddProblem />} />
         <Route path="/contest-detail" element={<ContestProblem/>} />
