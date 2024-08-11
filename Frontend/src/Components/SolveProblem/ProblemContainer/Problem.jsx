@@ -3,7 +3,6 @@ import classes from './Problem.module.css';
 
 
 const Problem = ({prob}) => {
-  console.log(prob);
 
   return (
     <div className={classes.problemCont}>

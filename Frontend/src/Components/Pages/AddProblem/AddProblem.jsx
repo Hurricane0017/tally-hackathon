@@ -40,7 +40,6 @@ const AddProblem = () => {
     setLoading(true);
     setSuccess(false);
     setError(null);
-    console.log(formData);
 
     try {
       await axios.post("/addproblem", formData);

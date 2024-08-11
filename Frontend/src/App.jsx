@@ -11,7 +11,8 @@ import axios from "axios";
 
 
 // axios.defaults.baseURL = "http://192.168.172.197:5001/api";
-axios.defaults.baseURL = "http://localhost:5001/api";
+axios.defaults.baseURL = "http://192.168.31.243:5001/api";
+// axios.defaults.baseURL = "http://localhost:5001/api";
 
 const App = () => {
   return (

@@ -5,6 +5,7 @@ import InputComponent from './InputComponent/InputComponent';
 import OutputComponent from './OutputComponent/OutputComponent';
 import classes from './CodeEditor.module.css';
 import axios from 'axios';
+import { useParams } from 'react-router-dom';
 
 const languageTemplates = {
   cpp: `#include <iostream>
@@ -40,6 +41,7 @@ public class Main {
 };
 
 const CodeEditor = ({ type,sampleInput }) => {
+  const {id} =useParams();
   const [language, setLanguage] = useState('cpp');
   const [theme, setTheme] = useState('vs-dark');
   const [code, setCode] = useState(languageTemplates.cpp);
@@ -62,15 +64,16 @@ const CodeEditor = ({ type,sampleInput }) => {
     setTheme(event.target.value);
   };
 
-  const handleRunCode = async () => {
+  const handleRunAndSubmitCode = async () => {
     const payload = {
       code,
       language,
       input,
+      problemId:id
     };
     console.log(payload);
     try {
-      const res = await axios.post('/run', payload);
+      const res = await axios.post('http://localhost:5001/api/run', payload);
       if (res.data.status === 'success') {
         setOutput(res.data.output);
       }
@@ -118,8 +121,8 @@ const CodeEditor = ({ type,sampleInput }) => {
         <OutputComponent output={output} />
       </div>
       <div className={classes.buttonContainer}>
-        <button onClick={handleRunCode} className={classes.runButton}>Run</button>
-        <button onClick={handleRunCode} className={classes.submitButton}>Submit</button>
+        <button onClick={handleRunAndSubmitCode} className={classes.runButton}>Run</button>
+        <button onClick={handleRunAndSubmitCode} className={classes.submitButton}>Submit</button>
       </div>
     </div>
   );

@@ -45,8 +45,8 @@
 
 .buttonContainer {
   display: flex;
-  justify-content: flex-end;
-  gap: 1rem;
+  justify-content: center;
+  gap: 3rem;
 }
 
 .runButton,

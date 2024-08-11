@@ -16,7 +16,6 @@ const YourSeparatorComponent = (props) => (
 
 const SolveProblem = () => {
   const { id } = useParams(); // Get the problem ID from the URL
-  console.log(id);
   const [problem, setProblem] = useState(null);
   const [loading, setLoading] = useState(true);
 
@@ -24,7 +23,6 @@ const SolveProblem = () => {
     const fetchProblem = async () => {
       try {
         const response = await axios.post(`/problem_detail`,{problem_id:id}); // Replace with your API endpoint
-        console.log(response);
         setProblem(response.data);
         setLoading(false);
       } catch (error) {
