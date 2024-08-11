@@ -52,7 +52,10 @@ const processCode = async (req, res) => {
       // Call getOutput function which handles compilation and execution
       const output = await getOutput();
 
-      let result;
+      let result={
+        status:"sucess",
+        output:output.output,
+      };
       if (problemId) {
         // console.log(output.output);
         // console.log(problem.data.output);
@@ -69,7 +72,6 @@ const processCode = async (req, res) => {
           }
         }
       }
-
       // Clean up files
       try {
         fs.writeFileSync(timeLimit, '');
