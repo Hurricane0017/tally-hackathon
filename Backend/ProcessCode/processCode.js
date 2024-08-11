@@ -68,8 +68,6 @@ const processCode = async (req, res) => {
             result = { status: "WA", output: output.output };
           }
         }
-      } else {
-        result = { status: "Error", output: "Problem ID not provided" };
       }
 
       // Clean up files
